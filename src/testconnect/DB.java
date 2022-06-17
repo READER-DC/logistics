@@ -2,8 +2,10 @@ package testconnect;
 
 import java.io.FileNotFoundException;
 import java.sql.SQLException;
-import dataReader.LoadData;
+import dataReader.ReadStoreCode;
+import dataReader.ReadStoreLinkShoppe;
 import loaderDB.LoadStoreCodeDB;
+import loaderDB.LoadStoreLinkShoppeDB;
 
 public class DB 
 {
@@ -11,13 +13,17 @@ public class DB
 	
 	public static void main(String[] args) throws SQLException, FileNotFoundException 
 	{	
-		String fileName1 = "/home/reader-01/Documents/01Project/Договора.csv";
-		LoadData loadData = new LoadData();
-		loadData.loadCSV(fileName1);
+		String storeCode = "/home/reader-01/Documents/01Project/Договора.csv";
+		String storeLinkShoppe = "/home/reader-01/Documents/01Project/store_link_shop.csv";
+		ReadStoreCode readStoreCode = new ReadStoreCode();
+		readStoreCode.loadStoreCode(storeCode);
+		LoadStoreCodeDB insertStoreCodeDB = new LoadStoreCodeDB();
+		insertStoreCodeDB.insertInTo();
 		
-		LoadStoreCodeDB insertCodeDB = new LoadStoreCodeDB();
-		insertCodeDB.insertInTo();
-		
+		ReadStoreLinkShoppe readStoreLinkShoppe = new ReadStoreLinkShoppe();
+		readStoreLinkShoppe.loadStoreLinkShoppe(storeLinkShoppe);
+		LoadStoreLinkShoppeDB insertLinkShoppeDB = new LoadStoreLinkShoppeDB();
+		insertLinkShoppeDB.insertInTo();
 		
 		
 		
