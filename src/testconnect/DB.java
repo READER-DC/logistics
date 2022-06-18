@@ -39,10 +39,10 @@ public class DB
 		LoadStockSkladDB insertStockSkladDB = new LoadStockSkladDB();
 		insertStockSkladDB.insertInTo();
 		
-		ReadMatrix readMatrix = new ReadMatrix();
-		readMatrix.loadMatrix(matrixString);
-		LoadMatrixDB insertMatrixDB = new LoadMatrixDB();
-		insertMatrixDB.insertInTo();
+//		ReadMatrix readMatrix = new ReadMatrix();
+//		readMatrix.loadMatrix(matrixString);
+//		LoadMatrixDB insertMatrixDB = new LoadMatrixDB();
+//		insertMatrixDB.insertInTo();
 		
 		System.out.println("Succes!");
 
