@@ -3,7 +3,7 @@ package loaderDB;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import entyty.StoreCode;
+import entity.StoreCode;
 import testconnect.Util;
 
 public class LoadStoreCodeDB {
@@ -15,7 +15,7 @@ public class LoadStoreCodeDB {
 	public void insertInTo() throws SQLException {
 		Util conn = new Util();
 		conn.init();
-		String sql = "insert into storecode(storecode, storename) VALUES (?	, ? )";
+		String sql = "insert into storecode(storecode, storename) VALUES ( ?,? )";
 		
 		PreparedStatement stmt = conn.createStatement(sql);
 		stmt.executeUpdate("DELETE FROM storecode");

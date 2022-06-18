@@ -2,7 +2,8 @@ package loaderDB;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import entyty.StoreLinkShoppe;
+
+import entity.StoreLinkShoppe;
 import testconnect.Util;
 
 public class LoadStoreLinkShoppeDB {

@@ -3,7 +3,8 @@ package dataReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
-import entyty.StoreLinkShoppe;
+
+import entity.StoreLinkShoppe;
 
 public class ReadStoreLinkShoppe {
 	private int cancel = 0;

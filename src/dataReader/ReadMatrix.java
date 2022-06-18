@@ -2,30 +2,26 @@ package dataReader;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.sql.SQLException;
 import java.util.Scanner;
 
-import entity.StoreCode;
+import entity.Matrix;
 
-public class ReadStoreCode{
-	
+public class ReadMatrix {
 	private int cancel = 0;
 	private int start = 0;
 	private char str = ';';
 	private String empty = "";
-	
 	HandlerFiles handlerFiles = new HandlerFiles();
 	
 	
 	public static String removeCharAt(String s, int pos) {
 		return s.substring(0, pos) + s.substring(pos + 1);
-		
 	}
 	
-	public void loadStoreCode(String fileName) throws FileNotFoundException, SQLException {
+	public void loadMatrix(String fileName) throws FileNotFoundException {
+		File inputFile = new File(fileName);
 		
-		File input = new File(fileName);
-		try (Scanner myReader = new Scanner(input)) {
+		try (Scanner myReader = new Scanner(inputFile)){
 			int row = handlerFiles.rowCount(fileName);
 			String table [] = new String [row];
 			
@@ -36,7 +32,7 @@ public class ReadStoreCode{
 				int delimiters = 0;
 				
 				String data = myReader.nextLine();
-				
+				System.out.println(data);
 				int end = data.length();
 				
 				for (int i = 0; i < end; i++) {
@@ -65,11 +61,43 @@ public class ReadStoreCode{
 								start = j+1;
 							}
 						}
-						table[row-1] = data.substring(start, end);	
+						if(data.substring(start, end).equals(empty))
+						{
+							table[row-1] = "0";
+						} else
+						{
+							table[row-1] = data.substring(start, end);;
+							
+						}
+						
 					}
-					StoreCode.createStoreCode(Integer.valueOf(table[1]), table[0]);
+					
+					Matrix.createMatrix(
+									  table[0]
+									, table[1]
+									, table[2]
+									, table[3]
+									, table[4]
+									, Integer.valueOf(table[5])
+									, Integer.valueOf(table[6])
+									, table[7]
+									, table[8]
+									, table[9]
+									, Integer.valueOf(table[10])
+									, Integer.valueOf(table[11])
+									, Integer.valueOf(table[12])
+									, Integer.valueOf(table[13])
+									, Integer.valueOf(table[14])
+									, Integer.valueOf(table[15])
+									, table[16]
+									, table[17]
+									, table[18]
+									, Integer.valueOf(table[19])
+									, Integer.valueOf(table[20])
+									, Integer.valueOf(table[21])
+									, Integer.valueOf(table[22])
+									, Integer.valueOf(table[23]));
+					}
 			}
 		}
 	}
-
-}
