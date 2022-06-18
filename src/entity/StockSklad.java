@@ -51,7 +51,8 @@ public class StockSklad {
 				inDelivery, brand);
 				arrayListStockSklads.add(scSklad);
 	}
-
+	
+	
 	public String getSkladName() {
 		return skladName;
 	}
@@ -172,6 +173,4 @@ public class StockSklad {
 		this.brand = brand;
 	}
 
-	
-	
 }
