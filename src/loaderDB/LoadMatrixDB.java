@@ -52,7 +52,7 @@ public class LoadMatrixDB {
 					+ Matrix.getOn_the_road_substitute()+", "
 					+ Matrix.getBzh()
 					+ ")";
-			System.out.println("sqlinsert = "+ sqlAddMatrix);
+//			System.out.println("sqlinsert = "+ sqlAddMatrix);
 			
 			stmt.executeUpdate(sqlAddMatrix);
 		}

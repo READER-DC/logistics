@@ -30,7 +30,7 @@ public class Matrix {
 	
 	public static ArrayList<Matrix> arrayListMatrix = new ArrayList<Matrix>();
 
-	public Matrix(String subgroup_name, String group_name, String sub_category, String category, String sku,
+	private Matrix(String subgroup_name, String group_name, String sub_category, String category, String sku,
 			int item_code, int store_code, String store_name, String cooperation_scheme, String format, int on_the_road,
 			int stock, int min_matrix, int max_matrix, int adress, int bz, String assortment_type, String date_in,
 			String date_out, int sold_in14days, int promotion, int stock_substitute, int on_the_road_substitute,
