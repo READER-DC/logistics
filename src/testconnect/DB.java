@@ -2,8 +2,6 @@ package testconnect;
 
 import java.io.FileNotFoundException;
 import java.sql.SQLException;
-import java.util.Timer;
-
 import dataReader.ReadMatrix;
 import dataReader.ReadStockSklad;
 import dataReader.ReadStoreCode;
@@ -24,25 +22,25 @@ public class DB
 		String matrixString = "/home/reader-01/Documents/01Project/Matrix.csv";
 		String stockSkladString = "/home/reader-01/Documents/01Project/stock.csv";
 				
-		ReadStoreCode readStoreCode = new ReadStoreCode();
-		readStoreCode.loadStoreCode(storeCode);
-		LoadStoreCodeDB insertStoreCodeDB = new LoadStoreCodeDB();
-		insertStoreCodeDB.insertInTo();
+//		ReadStoreCode readStoreCode = new ReadStoreCode();
+//		readStoreCode.loadStoreCode(storeCode);
+//		LoadStoreCodeDB insertStoreCodeDB = new LoadStoreCodeDB();
+//		insertStoreCodeDB.insertInTo();
+//		
+//		ReadStoreLinkShoppe readStoreLinkShoppe = new ReadStoreLinkShoppe();
+//		readStoreLinkShoppe.loadStoreLinkShoppe(storeLinkShoppe);
+//		LoadStoreLinkShoppeDB insertLinkShoppeDB = new LoadStoreLinkShoppeDB();
+//		insertLinkShoppeDB.insertInTo();
+//		
+//		ReadStockSklad readStockSklad = new ReadStockSklad();
+//		readStockSklad.loadSkladStock(stockSkladString);
+//		LoadStockSkladDB insertStockSkladDB = new LoadStockSkladDB();
+//		insertStockSkladDB.insertInTo();
 		
-		ReadStoreLinkShoppe readStoreLinkShoppe = new ReadStoreLinkShoppe();
-		readStoreLinkShoppe.loadStoreLinkShoppe(storeLinkShoppe);
-		LoadStoreLinkShoppeDB insertLinkShoppeDB = new LoadStoreLinkShoppeDB();
-		insertLinkShoppeDB.insertInTo();
-		
-		ReadStockSklad readStockSklad = new ReadStockSklad();
-		readStockSklad.loadSkladStock(stockSkladString);
-		LoadStockSkladDB insertStockSkladDB = new LoadStockSkladDB();
-		insertStockSkladDB.insertInTo();
-		
-//		ReadMatrix readMatrix = new ReadMatrix();
-//		readMatrix.loadMatrix(matrixString);
-//		LoadMatrixDB insertMatrixDB = new LoadMatrixDB();
-//		insertMatrixDB.insertInTo();
+		ReadMatrix readMatrix = new ReadMatrix();
+		readMatrix.loadMatrix(matrixString);
+		LoadMatrixDB insertMatrixDB = new LoadMatrixDB();
+		insertMatrixDB.insertInTo();
 		
 		System.out.println("Succes!");
 

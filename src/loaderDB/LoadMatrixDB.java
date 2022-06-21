@@ -1,12 +1,16 @@
 package loaderDB;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Calendar;
 
 import entity.Matrix;
 import testconnect.Util;
+import util.TimetableStarts;
 
 public class LoadMatrixDB {
+	
 	public LoadMatrixDB() {
 		
 	}
@@ -14,13 +18,25 @@ public class LoadMatrixDB {
 	public void insertInTo() throws SQLException {
 		Util conn = new Util();
 		conn.init();
+		String  weekString = "SELECT status FROM timetable_starts WHERE starYear="
+		+ Calendar.getInstance().get(Calendar.YEAR)
+		+ " AND startWeek="
+		+ Calendar.getInstance().get(Calendar.WEEK_OF_YEAR);
+		System.out.println(weekString);
+		
 		String sql = "insert into Matrix(subgroup_name, group_name, sub_category, category, sku,\n"
 				+ "				item_code, store_code, store_name, cooperation_scheme, format, on_the_road,\n"
 				+ "				stock, min_matrix, max_matrix, adress, bz, assortment_type, date_in,\n"
 				+ "				date_out, sold_in14days, promotion, stock_substitute, on_the_road_substitute,\n"
 				+ "				bzh) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,? )";
 		
-		PreparedStatement stmt = conn.createStatement(sql);
+		PreparedStatement stmt = conn.createStatement(weekString);
+		stmt.execute(weekString);
+		ResultSet rs = stmt.executeQuery(weekString);
+		rs.next();
+		int aString = rs.getInt("status");
+		if (aString != 1) {
+		System.out.println("запись не найдена проблемы!");
 		stmt.executeUpdate("DELETE FROM Matrix");
 		
 		for (Matrix Matrix : Matrix.arrayListMatrix) {
@@ -59,7 +75,8 @@ public class LoadMatrixDB {
 		
 		conn.close();
 		System.out.println("table \"Matrix\" updated");
-		
+		TimetableStarts.createTimeTableStart("Matrix", 1);
 	}
-
+	}
+	
 }

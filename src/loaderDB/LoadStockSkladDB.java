@@ -4,7 +4,6 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import entity.StockSklad;
-import entity.StoreCode;
 import testconnect.Util;
 
 public class LoadStockSkladDB {
@@ -54,6 +53,7 @@ public class LoadStockSkladDB {
 		}
 		
 		conn.close();
+		
 		System.out.println("table \"stock_sklad\" updated");
 		
 	}
