@@ -26,9 +26,13 @@ public class ReadStockSklad {
 		
 		File input = new File(fileName);
 		try (Scanner myReader = new Scanner(input)) {
+			
 			int row = handlerFiles.rowCount(fileName);
+			
 			String table [] = new String [row];
+			
 			String data = myReader.nextLine();
+			
 			for (;myReader.hasNextLine() == true; )
 			{
 				start = 0;
@@ -82,7 +86,6 @@ public class ReadStockSklad {
 			}
 		}
 	}
-
 
 
 }

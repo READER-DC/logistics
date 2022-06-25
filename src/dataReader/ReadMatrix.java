@@ -22,9 +22,13 @@ public class ReadMatrix {
 		File inputFile = new File(fileName);
 		
 		try (Scanner myReader = new Scanner(inputFile)){
+			
 			int row = handlerFiles.rowCount(fileName);
+			
 			String table [] = new String [row];
+			
 			String data = myReader.nextLine();
+			
 			for (;myReader.hasNextLine() == true; )
 			{
 				start = 0;

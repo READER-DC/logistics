@@ -6,6 +6,8 @@ import dataReader.ReadMatrix;
 import dataReader.ReadStockSklad;
 import dataReader.ReadStoreCode;
 import dataReader.ReadStoreLinkShoppe;
+import dataReader.ReadDeliveryShoppe;
+import loaderDB.LoadDeliveryShoppeDB;
 import loaderDB.LoadMatrixDB;
 import loaderDB.LoadStockSkladDB;
 import loaderDB.LoadStoreCodeDB;
@@ -19,23 +21,30 @@ public class DB
 	{	
 		String storeCode = "/home/reader-01/Documents/01Project/Договора.csv";
 		String storeLinkShoppe = "/home/reader-01/Documents/01Project/store_link_shop.csv";
-		String matrixString = "/home/reader-01/Documents/01Project/Matrix.csv";
 		String stockSkladString = "/home/reader-01/Documents/01Project/stock.csv";
+		String deliveryShoppeString = "/home/reader-01/Documents/01Project/deliveryShoppe.csv";
+		String matrixString = "/home/reader-01/Documents/01Project/Matrix.csv";
+		
 				
-//		ReadStoreCode readStoreCode = new ReadStoreCode();
-//		readStoreCode.loadStoreCode(storeCode);
-//		LoadStoreCodeDB insertStoreCodeDB = new LoadStoreCodeDB();
-//		insertStoreCodeDB.insertInTo();
-//		
-//		ReadStoreLinkShoppe readStoreLinkShoppe = new ReadStoreLinkShoppe();
-//		readStoreLinkShoppe.loadStoreLinkShoppe(storeLinkShoppe);
-//		LoadStoreLinkShoppeDB insertLinkShoppeDB = new LoadStoreLinkShoppeDB();
-//		insertLinkShoppeDB.insertInTo();
-//		
-//		ReadStockSklad readStockSklad = new ReadStockSklad();
-//		readStockSklad.loadSkladStock(stockSkladString);
-//		LoadStockSkladDB insertStockSkladDB = new LoadStockSkladDB();
-//		insertStockSkladDB.insertInTo();
+		ReadStoreCode readStoreCode = new ReadStoreCode();
+		readStoreCode.loadStoreCode(storeCode);
+		LoadStoreCodeDB insertStoreCodeDB = new LoadStoreCodeDB();
+		insertStoreCodeDB.insertInTo();
+		
+		ReadStoreLinkShoppe readStoreLinkShoppe = new ReadStoreLinkShoppe();
+		readStoreLinkShoppe.loadStoreLinkShoppe(storeLinkShoppe);
+		LoadStoreLinkShoppeDB insertLinkShoppeDB = new LoadStoreLinkShoppeDB();
+		insertLinkShoppeDB.insertInTo();
+		
+		ReadStockSklad readStockSklad = new ReadStockSklad();
+		readStockSklad.loadSkladStock(stockSkladString);
+		LoadStockSkladDB insertStockSkladDB = new LoadStockSkladDB();
+		insertStockSkladDB.insertInTo();
+		
+		ReadDeliveryShoppe readerDeliveryShoppe = new ReadDeliveryShoppe();
+		readerDeliveryShoppe.loadDeliveryShoppe(deliveryShoppeString);
+		LoadDeliveryShoppeDB insertDeliveryShoppeDB = new LoadDeliveryShoppeDB();
+		insertDeliveryShoppeDB.insertInTo();
 		
 		ReadMatrix readMatrix = new ReadMatrix();
 		readMatrix.loadMatrix(matrixString);

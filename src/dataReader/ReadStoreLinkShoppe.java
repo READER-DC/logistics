@@ -17,9 +17,12 @@ public class ReadStoreLinkShoppe {
 	public void loadStoreLinkShoppe(String fileName) throws FileNotFoundException {
 		File input = new File(fileName);
 		try (Scanner myReader = new Scanner(input)) {
+			
 			int row = handlerFiles.rowCount(fileName);
 			
 			String table [] = new String [row];
+			
+			String data = myReader.nextLine();
 			
 			for (;myReader.hasNextLine() == true; )
 			{
@@ -27,7 +30,7 @@ public class ReadStoreLinkShoppe {
 				cancel = 0;
 				int delimiters = 0;
 				
-				String data = myReader.nextLine();
+				data = myReader.nextLine();
 				
 				int end = data.length();
 								
