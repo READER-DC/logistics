@@ -7,7 +7,7 @@ import java.util.Calendar;
 
 import entity.Matrix;
 import testconnect.Util;
-import util.TimetableStarts;
+import util.TimeTableStarts;
 
 public class LoadMatrixDB {
 	
@@ -39,6 +39,7 @@ public class LoadMatrixDB {
 		if (aString != 1) {
 		System.out.println("update table Matrix");
 		stmt.executeUpdate("DELETE FROM Matrix");
+		int i = 0;
 		
 		for (Matrix Matrix : Matrix.arrayListMatrix) {
 
@@ -72,11 +73,18 @@ public class LoadMatrixDB {
 //			System.out.println("sqlinsert = "+ sqlAddMatrix);
 			
 			stmt.executeUpdate(sqlAddMatrix);
+			i++;
+			if (i % 10000 == 0 ) {
+				System.out.print("insert DB: " + i + "/t");
+			}
 		}
 		
 		conn.close();
 		System.out.println("table \"Matrix\" updated");
-		TimetableStarts.createTimeTableStart("Matrix", 1);
+		TimeTableStarts.createTimeTableStart("Matrix", 1);
+
+		
+		
 	} else {
 		System.out.println("table \"Matrix\" is actual");
 	}

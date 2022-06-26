@@ -2,16 +2,20 @@ package testconnect;
 
 import java.io.FileNotFoundException;
 import java.sql.SQLException;
+
 import dataReader.ReadMatrix;
-import dataReader.ReadStockSklad;
+import dataReader.ReadSales;
+import dataReader.ReadStock;
 import dataReader.ReadStoreCode;
 import dataReader.ReadStoreLinkShoppe;
 import dataReader.ReadDeliveryShoppe;
 import loaderDB.LoadDeliveryShoppeDB;
 import loaderDB.LoadMatrixDB;
-import loaderDB.LoadStockSkladDB;
+import loaderDB.LoadSalesDB;
+import loaderDB.LoadStockDB;
 import loaderDB.LoadStoreCodeDB;
 import loaderDB.LoadStoreLinkShoppeDB;
+import util.TimeTableStarts;
 
 public class DB 
 {
@@ -24,32 +28,41 @@ public class DB
 		String stockSkladString = "/home/reader-01/Documents/01Project/stock.csv";
 		String deliveryShoppeString = "/home/reader-01/Documents/01Project/deliveryShoppe.csv";
 		String matrixString = "/home/reader-01/Documents/01Project/Matrix.csv";
+		String saleString = "/home/reader-01/Documents/01Project/sales.csv";
 		
-				
-		ReadStoreCode readStoreCode = new ReadStoreCode();
-		readStoreCode.loadStoreCode(storeCode);
-		LoadStoreCodeDB insertStoreCodeDB = new LoadStoreCodeDB();
-		insertStoreCodeDB.insertInTo();
-		
-		ReadStoreLinkShoppe readStoreLinkShoppe = new ReadStoreLinkShoppe();
-		readStoreLinkShoppe.loadStoreLinkShoppe(storeLinkShoppe);
-		LoadStoreLinkShoppeDB insertLinkShoppeDB = new LoadStoreLinkShoppeDB();
-		insertLinkShoppeDB.insertInTo();
-		
-		ReadStockSklad readStockSklad = new ReadStockSklad();
-		readStockSklad.loadSkladStock(stockSkladString);
-		LoadStockSkladDB insertStockSkladDB = new LoadStockSkladDB();
-		insertStockSkladDB.insertInTo();
-		
-		ReadDeliveryShoppe readerDeliveryShoppe = new ReadDeliveryShoppe();
-		readerDeliveryShoppe.loadDeliveryShoppe(deliveryShoppeString);
-		LoadDeliveryShoppeDB insertDeliveryShoppeDB = new LoadDeliveryShoppeDB();
-		insertDeliveryShoppeDB.insertInTo();
-		
+//				
+//		ReadStoreCode readStoreCode = new ReadStoreCode();
+//		readStoreCode.loadStoreCode(storeCode);
+//		LoadStoreCodeDB insertStoreCodeDB = new LoadStoreCodeDB();
+//		insertStoreCodeDB.insertInTo();
+//		
+//		ReadStoreLinkShoppe readStoreLinkShoppe = new ReadStoreLinkShoppe();
+//		readStoreLinkShoppe.loadStoreLinkShoppe(storeLinkShoppe);
+//		LoadStoreLinkShoppeDB insertLinkShoppeDB = new LoadStoreLinkShoppeDB();
+//		insertLinkShoppeDB.insertInTo();
+//		
+//		ReadStock readStockSklad = new ReadStock();
+//		readStockSklad.loadStock(stockSkladString);
+//		LoadStockDB insertStockSkladDB = new LoadStockDB();
+//		insertStockSkladDB.insertInTo();
+//		
+//		ReadDeliveryShoppe readDeliveryShoppe = new ReadDeliveryShoppe();
+//		readDeliveryShoppe.loadDeliveryShoppe(deliveryShoppeString);
+//		LoadDeliveryShoppeDB insertDeliveryShoppeDB = new LoadDeliveryShoppeDB();
+//		insertDeliveryShoppeDB.insertInTo();
+//		
+//		ReadSales readSales = new ReadSales();
+//		readSales.loadSales(saleString);
+//		LoadSalesDB insertSalesDB = new LoadSalesDB();
+//		insertSalesDB.insertInTo();
+//		
 		ReadMatrix readMatrix = new ReadMatrix();
 		readMatrix.loadMatrix(matrixString);
 		LoadMatrixDB insertMatrixDB = new LoadMatrixDB();
 		insertMatrixDB.insertInTo();
+		
+		TimeTableStarts ttStarts = new TimeTableStarts();
+		ttStarts.loadTimetableStartsDB();
 		
 		System.out.println("Succes!");
 

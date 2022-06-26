@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 import entity.Matrix;
+import util.CheckArrival;
 
 public class ReadMatrix {
 	private int cancel = 0;
@@ -29,6 +30,7 @@ public class ReadMatrix {
 			
 			String data = myReader.nextLine();
 			
+			
 			for (;myReader.hasNextLine() == true; )
 			{
 				start = 0;
@@ -46,7 +48,9 @@ public class ReadMatrix {
 						end = data.length();
 					}
 				}
-								
+				
+				CheckArrival ca = new CheckArrival();
+				
 					for( int j = 0; j<end; j++) 
 					{
 						if(data.charAt(j) == str)
@@ -57,11 +61,25 @@ public class ReadMatrix {
 								table[delimiters] = "0";
 								delimiters += 1;
 								start = j+1;
-							} else
-							{
-								table[delimiters] = data.substring(start, cancel);
-								delimiters += 1;
-								start = j+1;
+							} else if(start+160>cancel)
+								{
+									table[delimiters] = data.substring(start, cancel);
+									delimiters += 1;
+									start = j+1;
+								} else {
+									table[delimiters] = data.substring(start, start+160);
+									delimiters += 1;
+									start = j+1;
+									
+								}
+							
+							if ( delimiters == 17 ) {
+								if ( 	ca.equalArrivalSKIPARCHIVE_STRING(table[16]) != false &&
+										ca.equalArrivalSKIPINET_STRING(table[16]) != false &&
+										ca.equalArrivalSKIPINETPRICE_STRING(table[16]) != false &&
+										ca.equalArrivalSKIPOPT_STRING(table[16]) != false ) {
+									j = end;
+								}
 							}
 						}
 						if(data.substring(start, end).equals(empty))
@@ -75,31 +93,40 @@ public class ReadMatrix {
 						
 					}
 					
-					Matrix.createMatrix(
-									  table[0]
-									, table[1]
-									, table[2]
-									, table[3]
-									, table[4]
-									, Integer.valueOf(table[5])
-									, Integer.valueOf(table[6])
-									, table[7]
-									, table[8]
-									, table[9]
-									, Integer.valueOf(table[10])
-									, Integer.valueOf(table[11])
-									, Integer.valueOf(table[12])
-									, Integer.valueOf(table[13])
-									, Integer.valueOf(table[14])
-									, Integer.valueOf(table[15])
-									, table[16]
-									, table[17]
-									, table[18]
-									, Integer.valueOf(table[19])
-									, Integer.valueOf(table[20])
-									, Integer.valueOf(table[21])
-									, Integer.valueOf(table[22])
-									, Integer.valueOf(table[23]));
+					if ( 	ca.equalArrivalSKIPARCHIVE_STRING(table[16]) == false &&
+							ca.equalArrivalSKIPINET_STRING(table[16]) == false &&
+							ca.equalArrivalSKIPINETPRICE_STRING(table[16]) == false &&
+							ca.equalArrivalSKIPOPT_STRING(table[16]) == false ) 
+					{
+						Matrix.createMatrix(
+								  table[0]
+								, table[1]
+								, table[2]
+								, table[3]
+								, table[4]
+								, Integer.valueOf(table[5])
+								, Integer.valueOf(table[6])
+								, table[7]
+								, table[8]
+								, table[9]
+								, Integer.valueOf(table[10])
+								, Integer.valueOf(table[11])
+								, Integer.valueOf(table[12])
+								, Integer.valueOf(table[13])
+								, Integer.valueOf(table[14])
+								, Integer.valueOf(table[15])
+								, table[16]
+								, table[17]
+								, table[18]
+								, Integer.valueOf(table[19])
+								, Integer.valueOf(table[20])
+								, Integer.valueOf(table[21])
+								, Integer.valueOf(table[22])
+								, Integer.valueOf(table[23]));
+						
+					}
+					
+					
 					}
 			}
 		}

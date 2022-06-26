@@ -2,7 +2,7 @@ package entity;
 
 import java.util.ArrayList;
 
-public class StockSklad {
+public class Stock {
 	private String skladName;
 	private int itemCode;
 	private String itemName;
@@ -19,9 +19,9 @@ public class StockSklad {
 	private String inDelivery;
 	private String brand;
 	
-	public static ArrayList<StockSklad> arrayListStockSklads = new ArrayList<StockSklad>();
+	public static ArrayList<Stock> arrayListStock = new ArrayList<Stock>();
 	
-	private StockSklad(String skladName, int itemCode, String itemName, int inReserve, int allStock, double cost, int freeStock,
+	private Stock(String skladName, int itemCode, String itemName, int inReserve, int allStock, double cost, int freeStock,
 			int inReserveForm, double pCost, int generalStock, String relevance, String arrival, String subCategory,
 			String inDelivery, String brand) {
 		super();
@@ -42,14 +42,14 @@ public class StockSklad {
 		this.brand = brand;
 	}
 	
-	public static void createStockSklad (String skladName, int itemCode, String itemName, int inReserve, int allStock, double cost, int freeStock,
+	public static void createStock (String skladName, int itemCode, String itemName, int inReserve, int allStock, double cost, int freeStock,
 			int inReserveForm, double pCost, int generalStock, String relevance, String arrival, String subCategory,
 			String inDelivery, String brand)
 	{
-		StockSklad scSklad = new StockSklad( skladName,  itemCode, itemName, inReserve,  allStock, cost, freeStock,
+		Stock scSklad= new Stock( skladName,  itemCode, itemName, inReserve,  allStock, cost, freeStock,
 				inReserveForm, pCost, generalStock, relevance, arrival, subCategory,
 				inDelivery, brand);
-				arrayListStockSklads.add(scSklad);
+				arrayListStock.add(scSklad);
 	}
 	
 	

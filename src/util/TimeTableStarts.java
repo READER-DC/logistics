@@ -7,22 +7,22 @@ import java.util.Calendar;
 
 import testconnect.Util;
 
-public class TimetableStarts {
+public class TimeTableStarts {
 	private String tableName;
 	private static int starYear;
 	private static int startWeek;
 	private int status;
-	public static ArrayList<TimetableStarts> arrayListTimetableStarts = new ArrayList<TimetableStarts>();
+	public static ArrayList<TimeTableStarts> arrayListTimetableStarts = new ArrayList<TimeTableStarts>();
 	
-	private TimetableStarts(String tableName, int startWeek, int starYear, int status) {
+	private TimeTableStarts(String tableName, int startWeek, int starYear, int status) {
 		super();
 		this.tableName = tableName;
-		TimetableStarts.startWeek = startWeek;
-		TimetableStarts.starYear = starYear;
+		TimeTableStarts.startWeek = startWeek;
+		TimeTableStarts.starYear = starYear;
 		this.status = status;
 	}
 	
-	private TimetableStarts() {
+	public TimeTableStarts() {
 		
 	}
 	
@@ -31,7 +31,7 @@ public class TimetableStarts {
 			starYear = Calendar.getInstance().get(Calendar.YEAR);
 
 		
-		TimetableStarts tStarts = new TimetableStarts(tableName, startWeek, starYear, status);
+		TimeTableStarts tStarts = new TimeTableStarts(tableName, startWeek, starYear, status);
 		arrayListTimetableStarts.add(tStarts);
 	}
 	
@@ -41,7 +41,7 @@ public class TimetableStarts {
 		String sql = "insert into timetable_starts(tableName, startWeek, starYear, status)VALUES(????)";
 		PreparedStatement stmt = conn.createStatement(sql);
 		
-		for (TimetableStarts ts : TimetableStarts.arrayListTimetableStarts) {
+		for (TimeTableStarts ts : TimeTableStarts.arrayListTimetableStarts) {
 			String sqlAddTimetableStarts = "insert into timetable_starts(tableName, startWeek, starYear, status)VALUES("
 					+ "\"" + ts.getTableName() + "\", "
 					+ ts.getStartWeek() + ", "
@@ -68,7 +68,7 @@ public class TimetableStarts {
 	}
 
 	public void setStarYear(int starYear) {
-		TimetableStarts.starYear = starYear;
+		TimeTableStarts.starYear = starYear;
 	}
 
 	public int getStartWeek() {
@@ -76,7 +76,7 @@ public class TimetableStarts {
 	}
 
 	public void setStartWeek(int startWeek) {
-		TimetableStarts.startWeek = startWeek;
+		TimeTableStarts.startWeek = startWeek;
 	}
 
 	public int getStatus() {

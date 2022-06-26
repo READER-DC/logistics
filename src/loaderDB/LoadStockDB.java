@@ -3,31 +3,31 @@ package loaderDB;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import entity.StockSklad;
+import entity.Stock;
 import testconnect.Util;
 
-public class LoadStockSkladDB {
+public class LoadStockDB {
 	
 	
 	
-	public LoadStockSkladDB() {
+	public LoadStockDB() {
 		
 	}
 
 	public void insertInTo() throws SQLException {
 		Util conn = new Util();
 		conn.init();
-		String sql = "insert into stock_sklad(skladName,  itemCode, itemName, inReserve,  allStock, cost, freeStock,\n"
+		String sql = "insert into stock(skladName,  itemCode, itemName, inReserve,  allStock, cost, freeStock,\n"
 				+ "				inReserveForm, pCost, generalStock, relevance, arrival, subCategory,\n"
 				+ "				inDelivery, brand) VALUES ( ?,?,?,?,?,?,?,?,?,?,?,?,?,?,? )";
 		
 		PreparedStatement stmt = conn.createStatement(sql);
-		stmt.executeUpdate("DELETE FROM stock_sklad");
+		stmt.executeUpdate("DELETE FROM stock");
 		
-		for (StockSklad ss : StockSklad.arrayListStockSklads) {
+		for (Stock ss : Stock.arrayListStock) {
 
-			String sqlAddStockSklad;
-			sqlAddStockSklad = "insert into stock_sklad(skladName,  itemCode, itemName, inReserve,  allStock, cost, freeStock,\n"
+			String sqlAddStock;
+			sqlAddStock = "insert into stock(skladName,  itemCode, itemName, inReserve,  allStock, cost, freeStock,\n"
 					+ "				inReserveForm, pCost, generalStock, relevance, arrival, subCategory,\n"
 					+ "				inDelivery, brand) VALUES ("
 					+ "\"" + ss.getSkladName() + "\", "
@@ -49,12 +49,12 @@ public class LoadStockSkladDB {
 					
 //			System.out.println("sqlinsert = "+ sqlAddStockSklad);
 			
-			stmt.executeUpdate(sqlAddStockSklad);
+			stmt.executeUpdate(sqlAddStock);
 		}
 		
 		conn.close();
 		
-		System.out.println("table \"stock_sklad\" updated");
+		System.out.println("table \"stock\" updated");
 		
 	}
 

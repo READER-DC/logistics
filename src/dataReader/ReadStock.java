@@ -5,9 +5,10 @@ import java.io.FileNotFoundException;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-import entity.StockSklad;
+import entity.Stock;
+import util.CheckArrival;
 
-public class ReadStockSklad {
+public class ReadStock {
 	
 	private int cancel = 0;
 	private int start = 0;
@@ -22,7 +23,7 @@ public class ReadStockSklad {
 		
 	}
 	
-	public void loadSkladStock(String fileName) throws FileNotFoundException, SQLException {
+	public void loadStock(String fileName) throws FileNotFoundException, SQLException {
 		
 		File input = new File(fileName);
 		try (Scanner myReader = new Scanner(input)) {
@@ -51,7 +52,9 @@ public class ReadStockSklad {
 						end = data.length();
 					}
 				}
-								
+				
+				CheckArrival ca = new CheckArrival();
+				
 					for( int j = 0; j<end; j++) 
 					{
 						if(data.charAt(j) == str)
@@ -62,27 +65,53 @@ public class ReadStockSklad {
 								table[delimiters] = "0";
 								delimiters += 1;
 								start = j+1;
-							} else
+							} else if (start+160>cancel)
 							{
 								table[delimiters] = data.substring(start, cancel);
 								delimiters += 1;
 								start = j+1;
+							} else {
+								table[delimiters] = data.substring(start, start+160);
+								delimiters += 1;
+								start = j+1;
+								
+							}
+							if (delimiters == 11) {
+								if ( 	ca.equalArrivalSKIPARCHIVE_STRING(table[10]) == true &&
+										ca.equalArrivalSKIPINET_STRING(table[10]) == true &&
+										ca.equalArrivalSKIPINETPRICE_STRING(table[10]) == true &&
+										ca.equalArrivalSKIPOPT_STRING(table[10]) == true ) {
+									j = end;
+								}
 							}
 						}
 						table[row-1] = data.substring(start, end);	
 					}
-					StockSklad.createStockSklad(
-							table[0], 
-							Integer.valueOf(table[1]), 
-							table[2], 
-							Integer.valueOf(table[3]), 
-							Integer.valueOf(table[4]), 
-							Double.valueOf(table[5]), 
-							Integer.valueOf(table[6]), 
-							Integer.valueOf(table[7]), 
-							Double.valueOf(table[8]), 
-							Integer.valueOf(table[9]), 
-							table[10], table[11], table[12], table[13],table[14]);
+					
+					
+					
+					if ( 	ca.equalArrivalSKIPARCHIVE_STRING(table[10]) == false &&
+							ca.equalArrivalSKIPINET_STRING(table[10]) == false &&
+							ca.equalArrivalSKIPINETPRICE_STRING(table[10]) == false &&
+							ca.equalArrivalSKIPOPT_STRING(table[10]) == false ) 
+					
+					{
+						Stock.createStock(
+								table[0], 
+								Integer.valueOf(table[1]), 
+								table[2], 
+								Integer.valueOf(table[3]), 
+								Integer.valueOf(table[4]), 
+								Double.valueOf(table[5]), 
+								Integer.valueOf(table[6]), 
+								Integer.valueOf(table[7]), 
+								Double.valueOf(table[8]), 
+								Integer.valueOf(table[9]), 
+								table[10], table[11], table[12], table[13],table[14]);
+						
+					}
+					
+					
 			}
 		}
 	}
