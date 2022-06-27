@@ -40,22 +40,22 @@ public class DB
 //		readStoreLinkShoppe.loadStoreLinkShoppe(storeLinkShoppe);
 //		LoadStoreLinkShoppeDB insertLinkShoppeDB = new LoadStoreLinkShoppeDB();
 //		insertLinkShoppeDB.insertInTo();
-//		
-//		ReadStock readStockSklad = new ReadStock();
-//		readStockSklad.loadStock(stockSkladString);
-//		LoadStockDB insertStockSkladDB = new LoadStockDB();
-//		insertStockSkladDB.insertInTo();
-//		
-//		ReadDeliveryShoppe readDeliveryShoppe = new ReadDeliveryShoppe();
-//		readDeliveryShoppe.loadDeliveryShoppe(deliveryShoppeString);
-//		LoadDeliveryShoppeDB insertDeliveryShoppeDB = new LoadDeliveryShoppeDB();
-//		insertDeliveryShoppeDB.insertInTo();
-//		
-//		ReadSales readSales = new ReadSales();
-//		readSales.loadSales(saleString);
-//		LoadSalesDB insertSalesDB = new LoadSalesDB();
-//		insertSalesDB.insertInTo();
-//		
+		
+		ReadStock readStock = new ReadStock();
+		readStock.loadStock(stockSkladString);
+		LoadStockDB insertStockDB = new LoadStockDB();
+		insertStockDB.insertInTo();
+		
+		ReadDeliveryShoppe readDeliveryShoppe = new ReadDeliveryShoppe();
+		readDeliveryShoppe.loadDeliveryShoppe(deliveryShoppeString);
+		LoadDeliveryShoppeDB insertDeliveryShoppeDB = new LoadDeliveryShoppeDB();
+		insertDeliveryShoppeDB.insertInTo();
+		
+		ReadSales readSales = new ReadSales();
+		readSales.loadSales(saleString);
+		LoadSalesDB insertSalesDB = new LoadSalesDB();
+		insertSalesDB.insertInTo();
+		
 		ReadMatrix readMatrix = new ReadMatrix();
 		readMatrix.loadMatrix(matrixString);
 		LoadMatrixDB insertMatrixDB = new LoadMatrixDB();
